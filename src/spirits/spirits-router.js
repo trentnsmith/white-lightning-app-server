@@ -78,5 +78,25 @@ spiritsRouter
         })
         .catch(next)
     })
+    .patch(jsonParser, (req, res, next) => {
+        const { spirit_name, content, age, abv, category, distillery_id } = req.body;
+        const spiritToUpdate = { spirit_name, content, age, abv, category, distillery_id };
+
+        const numberOfValues = Object.values(spiritToUpdate).filter(Boolean).length;
+        if (numberOfValues === 0)
+            return res.status(400).json({
+                error: { message: `Request body must contain spirit_name, content, age, abv, category, distillery_id` }
+            });
+
+        SpiritsService.updateSpirit(
+            req.app.get('db'),
+            req.params.spirit_id,
+            spiritToUpdate
+        )
+        .then(numRowsAffected => {
+            res.status(204).end();
+        })
+        .catch(next);
+    });
 
 module.exports = spiritsRouter;

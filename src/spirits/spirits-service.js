@@ -13,6 +13,22 @@ const SpiritsService = {
             .then((rows) => {
                 return rows[0]
             });
+    },
+
+    getById(db, id) {
+        return db
+            .select('*')
+            .from('white_lightning_spirits')
+            .where('id', id)
+            .first();
+    },
+
+    deleteSpirit(db, id) {
+        return db
+            .select('*')
+            .from('white_lightning_spirits')
+            .where('id', id)
+            .delete();
     }
 };
 
