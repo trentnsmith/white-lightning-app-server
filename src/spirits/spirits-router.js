@@ -48,4 +48,35 @@ spiritsRouter
         .catch(next)
     })
 
+spiritsRouter
+    .route('/:spirit_id')
+    .all((req, res, next) => {
+        SpiritsService.getById(
+            req.app.get('db'),
+            req.params.spirit_id
+        )
+        .then(spirit => {
+            if (!spirit) {
+                return res.status(404).json({
+                    error: { message: `Spirit doesn't exist` }
+                });
+            }
+            res.spirit = spirit
+            next();
+        })
+    })
+    .get((req, res, next) => {
+        res.json(serializeSpirit(res.spirit))
+    })
+    .delete((req, res, next) => {
+        SpiritsService.deleteSpirit(
+            req.app.get('db'),
+            req.params.spirit_id
+        )
+        .then(numRowsAffected => {
+            res.status(204).end()
+        })
+        .catch(next)
+    })
+
 module.exports = spiritsRouter;
