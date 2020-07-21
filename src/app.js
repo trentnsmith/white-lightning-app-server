@@ -5,6 +5,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const { NODE_ENV } = require('./config');
 const distilleryRouter = require('./distilleries/distilleries-routers');
+const spiritsRouter = require('./spirits/spirits-router');
 
 const app = express()
 
@@ -18,6 +19,7 @@ app.use(helmet())
 app.use(cors())
 
 app.use('/api/distilleries', distilleryRouter)
+app.use('/api/spirits', spiritsRouter)
 
 app.get('/', (req, res) => {
     res.send('Hello, world!')
