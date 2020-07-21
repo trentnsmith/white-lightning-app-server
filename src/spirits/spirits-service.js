@@ -29,6 +29,14 @@ const SpiritsService = {
             .from('white_lightning_spirits')
             .where('id', id)
             .delete();
+    },
+
+    updateSpirit(db, id, updateFields) {
+        return db
+            .select('*')
+            .from('white_lightning_spirits')
+            .where('id', id)
+            .update(updateFields);
     }
 };
 
