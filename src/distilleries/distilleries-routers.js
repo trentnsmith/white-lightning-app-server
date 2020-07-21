@@ -1,8 +1,6 @@
-const path = requre('path');
 const express = require('express');
 const DistilleryService = require('./distilleries-service');
 const distilleryRouter = express.Router();
-const jsonParser = express.json();
 
 const serializeDistillery = distillery => ({
     id: distillery.id,
@@ -19,7 +17,7 @@ distilleryRouter
             return res.json(distilleries.map(serializeDistillery));
         })
         .catch(next)
-    })
+    });
 
 
 module.exports = distilleryRouter;
