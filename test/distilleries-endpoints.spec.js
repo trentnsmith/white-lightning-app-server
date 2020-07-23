@@ -15,9 +15,6 @@ describe('Distilleries endpoints', () => {
         app.set('db', db)
     });
 
-
-
-
     describe('GET /api/distilleries', () => {
         context('Given no courses', () => {
             it('responds with 200 and an empty list', () => {
@@ -32,7 +29,7 @@ describe('Distilleries endpoints', () => {
             
             beforeEach('insert distilleries', () => {
                 return db 
-                    .into('white_lightning')
+                    .into('white_lightning_distilleries')
                     .insert(testDistilleries)
             });
 
