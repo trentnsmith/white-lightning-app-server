@@ -53,7 +53,7 @@ describe('Spirits endpoints', () => {
                 const id = 12344;
                 return supertest(app)
                     .delete(`/api/spirits/${id}`)
-                    .expect(404, { error: { message: "Spirit does not exist"} } )
+                    .expect(404, { error: { message: "Spirit doesn't exist"} } )
             });
         });
 
@@ -118,7 +118,7 @@ describe('Spirits endpoints', () => {
                 const spiritId = 5432;
                 return supertest(app)
                     .patch(`/api/spirits/${spiritId}`)
-                    .expect(404, { error: { message: `Spirit does not exist`} } )
+                    .expect(404, { error: { message: `Spirit doesn't exist`} } )
             });
         });
 
