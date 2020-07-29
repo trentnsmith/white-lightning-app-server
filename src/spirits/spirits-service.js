@@ -2,7 +2,9 @@ const SpiritsService = {
     getAllSpirits(db) {
         return db
             .select('*')
-            .from('white_lightning_spirits');
+            .from('white_lightning_spirits', 'white_lightning_distilleries')
+            .where('white_lightning_spirits.distillery_id' = 'white_lightning_distilleries.id');
+
     },
 
     createSpirit(db, spirit) {
@@ -19,8 +21,6 @@ const SpiritsService = {
         return db
             .select('*')
             .from('white_lightning_spirits')
-            .fulljoin('white_lightning_distilleries')
-            .on('white_lightning_spirits.distillery_id = white_lightning_distilleries.id')
             .where('id', id)
             .first();
     },
