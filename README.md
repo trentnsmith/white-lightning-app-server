@@ -1,26 +1,82 @@
-# Express Boilerplate!
+# White Lightning API
 
-This is a boilerplate project used for starting new projects!
+Link to live app: https://white-lightning-app.vercel.app/
 
-## Set up
+## Summary
 
-Complete the following steps to start a new project (NEW-PROJECT-NAME):
+This API allows a user to view information about distilleries in Omaha, NE, and see the types of spirits offered at the distilleries. 
 
-1. Clone this repository to your local machine `git clone BOILERPLATE-URL NEW-PROJECTS-NAME`
-2. `cd` into the cloned repository
-3. Make a fresh start of the git history for this project with `rm -rf .git && git init`
-4. Install the node dependencies `npm install`
-5. Move the example Environment file to `.env` that will be ignored by git and read by the express server `mv example.env .env`
-6. Edit the contents of the `package.json` to use NEW-PROJECT-NAME instead of `"name": "express-boilerplate",`
+# Endpoint Documentation
 
-## Scripts
+## GET Spirits
 
-Start the application `npm start`
+Returns information about all spirits in the database
 
-Start nodemon for the application `npm run dev`
+**Method:** GET
 
-Run the tests `npm test`
+**URL:**  https://floating-scrubland-72191.herokuapp.com/api/spirits
 
-## Deploying
+**Example Response:** 
 
-When your new project is ready for deployment, add a new Heroku application with `heroku create`. This will make a new git remote called "heroku" and you can then `npm run deploy` which will push to this remote's master branch.
+Status: 200 OK
+
+    {
+        "id": 36,
+        "spirit_name": "Honest American",
+        "content": "\"Straight up, un aged goodness! Aged for 7 days on new oak, this 100% malted barley lends an assertive grain flavor with firm sweetness.\"",
+        "age": "7 days",
+        "abv": "90%",
+        "category": "White Whisky",
+        "distillery_id": 1,
+        "distillery_name": "Brickway Brewery and Distillery",
+        "website": "www.drinkbrickway.com",
+        "description": "Located in the heart of Omaha’s Old Market District, Brickway Brewery & Distillery taps into Omaha’s rich history by handcrafting beer and spirits                              that are as tried-and-true as the brick paved streets"
+    }
+    
+## Add a new spirit 
+
+Adds a new spirit to the database
+
+**Method:** POST
+
+**URL:** https://floating-scrubland-72191.herokuapp.com/api
+
+**Example:** POST
+
+**Example Respone:** STATUS 201
+
+## Remove a spirit
+
+Removes a spirit and it's data from the database.
+
+**Method:** DELETE
+
+**URL:** https://floating-scrubland-72191.herokuapp.com/api
+
+**Example Response:** STATUS 204
+
+## Screenshots
+
+Landing Page. A user can click on anyone of the links to get started:
+
+![image](https://user-images.githubusercontent.com/58092710/88878433-9b3ad580-d1ed-11ea-85b9-f9005a093ea1.png)
+
+Distillery Page. A user can read a little about the distilleries in the local area, and click a link to check out the website:
+
+![image](https://user-images.githubusercontent.com/58092710/88878472-af7ed280-d1ed-11ea-969d-bc0ec3b1e5a8.png)
+
+Spirits Page. A user can read a little about all of the types of spirits the the distilleries have to offer. A user can also delete an item if they choose:
+
+![image](https://user-images.githubusercontent.com/58092710/88878496-bb6a9480-d1ed-11ea-9372-5635d4bdec2b.png)
+
+Add Spirits Page. A user can add a new spirit to the database:
+
+![image](https://user-images.githubusercontent.com/58092710/88878524-c8878380-d1ed-11ea-8180-053a33b33493.png)
+
+About Page. A user can read a little about the history of distilling in Omaha, NE and where the term "White Lightning" comes from:
+
+![image](https://user-images.githubusercontent.com/58092710/88878559-d76e3600-d1ed-11ea-870b-8177ab50cdbe.png)
+
+## Technology
+
+React, Express, Axios, Helmet, Knex, Morgan, Winston, XSS, Chai, Postgrator, Mocha, Supertest
