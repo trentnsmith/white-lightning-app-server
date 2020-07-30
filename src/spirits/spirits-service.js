@@ -1,7 +1,7 @@
 const SpiritsService = {
     getAllSpirits(db) {
         return db ('white_lightning_spirits')
-            .select('*')
+            .select('white_lightning_spirits.*', 'white_lightning_distilleries.distillery_name', 'white_lightning_distilleries.website', 'white_lightning_distilleries.description')
             .join('white_lightning_distilleries', 'white_lightning_spirits.distillery_id', '=', 'white_lightning_distilleries.id');
     },
 
