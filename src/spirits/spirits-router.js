@@ -11,7 +11,10 @@ const serializeSpirit = spirit => ({
     age: spirit.age,
     abv: spirit.abv,
     category: spirit.category,
-    distillery_id: spirit.distillery_id
+    distillery_id: spirit.distillery_id,
+    distillery_name: spirit.distillery_name,
+    website: spirit.website,
+    description: spirit.description
 });
 
 spiritsRouter
