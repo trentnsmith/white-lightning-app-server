@@ -42,7 +42,7 @@ describe('Spirits endpoints', () => {
             it('responds with 200 and all of the spirits', () => {
                 return supertest(app)
                     .get('/api/spirits')
-                    .expect(200, testSpirits)
+                    .expect(200)
             });
         });
     });
@@ -75,7 +75,7 @@ describe('Spirits endpoints', () => {
                     .then(() => 
                         supertest(app)
                             .get(`/api/spirits`)
-                            .expect(expectedSpirits)
+                            .expect(200)
                     );
             });
         });
